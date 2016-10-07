@@ -34,6 +34,11 @@ Exploratory Data Analysis
 This is a list of figures showing the intercorrelation between all the features. Though this figure looks confusing due to its size, it is a very useful tool.   
 ![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/ExploratoryFigures.png?raw=true)  
 
+Histogram of burn area variable:   
 ![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/untransformed_area.png?raw=true)  
 
+Transformed area variable is more convenient to deal with:   
 ![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/transformed_area.png?raw=true)  
+
+Here it seems there isn't a strong correlation between any of the variables and forest fires:   
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/correlation_heat_map.png?raw=True)
