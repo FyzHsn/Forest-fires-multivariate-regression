@@ -27,3 +27,13 @@ P. Cortez and A. Morais. A Data Mining Approach to Predict Forest Fires using Me
 In J. Neves, M. F. Santos and J. Machado Eds., New Trends in Artificial Intelligence, 
 Proceedings of the 13th EPIA 2007 - Portuguese Conference on Artificial Intelligence, December, 
 Guimaraes, Portugal, pp. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9.
+
+Exploratory Data Analysis
+-------------------------
+
+This is a list of figures showing the intercorrelation between all the features. Though this figure looks confusing due to its size, it is a very useful tool.   
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/ExploratoryFigures.png?raw=true)  
+
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/untransformed_area.png?raw=true)  
+
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/transformed_area.png?raw=true)  
