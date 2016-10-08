@@ -28,6 +28,18 @@ In J. Neves, M. F. Santos and J. Machado Eds., New Trends in Artificial Intellig
 Proceedings of the 13th EPIA 2007 - Portuguese Conference on Artificial Intelligence, December, 
 Guimaraes, Portugal, pp. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9.
 
+**Note:** It was initially my intentio to model forest fires via multivariate regression analysis. However, after conducting exploratory data analysis and looking at the variance of damage area versus the meteorological variables as well as the correlation table, we find that the correlation is extremely small. 
+
+At this point, it is extremely important to recognize that though independent variables have zero covariance, zero covariance does not imply independence of variables. As an example conside: X and Y = X^2. Cov(X, Y) = 0. Furthermore, the damage area of the fire would possibly be highly chaotic. It is the job of the data scientist to do good "science" which involves some understanding of the domain. Of course, applying multivariate regression (especially linear regression) is not a good approach since I expect the burn area to be highly chaotic. 
+
+However, in the EDA (Exploratory data analysis) step, it seems promising that a classification type of problem could be set up. The classification problem would involve conditions that lead to fire or that don't since almost half the data sets consist of 0.0 ha of damage area.
+
+Lastly, for the sake of trying things anyways, I will try a random forest regression approach to fitting the data.
+
+### Objective:
+1. Apply SVM algorithm to classify if the burn damage will be non-zero or not.   
+2. Apply random forest regression since it is a good tool for non-linear regression.   
+
 Exploratory Data Analysis
 -------------------------
 
@@ -40,5 +52,23 @@ Histogram of burn area variable:
 Transformed area variable is more convenient to deal with:   
 ![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/transformed_area.png?raw=true)  
 
-Here it seems there isn't a strong correlation between any of the variables and forest fires:   
+The correlation values are pretty much zero. In conjuction with the EDA plots and the absence of obvious patterns, I abandon the idea of multiple regression and instead reformulate this scenario as a classification problem of a forest fire or no forest fire scenario, leaving the actual burn area as a chaotic phenomenon.   
 ![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/correlation_heat_map.png?raw=True)
+
+Binary classification via SVM
+-----------------------------
+
+### Step Outline
+* Process data frame to favorable form: add new feature.   
+* Standardize data set.   
+* Test/Training set split of the data set.   
+* Apply SVM naively and check accuracy score via cross-validation.   
+* Hyper-parameter tuning via grid search.  
+* State final conclusions.   
+
+
+
+
+
+
+
