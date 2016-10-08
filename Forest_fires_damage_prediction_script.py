@@ -17,6 +17,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn import linear_model
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
 
 ################
 # 0. LOAD DATA #
@@ -63,12 +66,27 @@ A brief discussion of the feature vectors:
     
 """
 
+##########################
+# 2. DATA PRE-PROCESSING #
+##########################
+# Remove row where the burn area is 0.0
+df = df[df.area >= 1.0]
+print(df.shape)
+
+# Create target variable and feature vectors - information about the
+# day of week and month do not seem to be relevant from exploratory data 
+# analysis plots.
+del df['day']
+del df['month']
+
+X = df.iloc[:, :9].values
+y = df.iloc[:, 10].values
 
 ################################
-# 2. EXPLORATORY DATA ANALYSIS #
+# 3. EXPLORATORY DATA ANALYSIS #
 ################################
 sns.set(style='whitegrid', context='notebook')
-cols = ['FFMC', 'DMC', 'DC', 'ISI', 'temp', 'RH', 'wind', 'rain', 'area']
+cols = df.columns
 sns.pairplot(df[cols], size=2.5)
 plt.show()
 
@@ -82,15 +100,49 @@ print(df['area'].describe())
 
 # histogram of target variable - burnt area
 df['area'].hist(bins=200)
-plt.savefig('untransformed_area.png')
-plt.clf()
+plt.title('Histogram of burnt area (in ha)')
+plt.show()
+#plt.savefig('untransformed_area.png')
+#plt.clf()
 
 # transformation of area to perhaps to deal with skewness
 area_transform = np.log(1 + df['area'])
-area_transform.hist()
-##################################################################
-# 3. FIT DATA - REGRESSION ANAYSIS + OUTLIER DETECTION ALGORITHM #
-##################################################################
+area_transform.hist(bins=15)
+plt.title('log(1 + area) transform of the area')
+plt.show()
+#plt.savefig('transformed_area.png')
+#plt.clf()
+
+# only deal with log transformed area from now on
+df['area'] = np.log(1 + np.log(1 + np.log(1 + df['area'])))
+sns.set(style='whitegrid', context='notebook')
+cols = ['FFMC', 'DMC', 'DC', 'ISI', 'temp', 'RH', 'wind', 'rain', 'area']
+sns.pairplot(df[cols], size=2.5)
+plt.show()
+
+# correlation matrix 
+cols = ['X', 'Y', 'FFMC', 'DMC', 'DC', 'ISI', 'temp', 'RH', 'wind', 
+        'rain', 'area']
+cor_mat = np.corrcoef(df[cols].values.T)
+sns.set(font_scale=1.5)
+heat_map = sns.heatmap(cor_mat,
+                       cbar=True,
+                       annot=True,
+                       square=True,
+                       fmt='.2f',
+                       annot_kws={'size': 12},
+                       yticklabels=cols,
+                       xticklabels=cols)
+plt.title('Correlation Matrix - Heat Map')
+plt.show()
+#plt.savefig('correlation_heat_map.png')
+#plt.clf()
+
+################################################################
+# IMPORTANT NOTE: SMALL CORRELATION DOES NOT NECESSARILY IMPLY #
+# INDEPENDENCE OF VARIABLES. EXAMP: X AND Y=X^2 COV(X, Y) = 0. #                          
+################################################################
+
 
 ##################################
 # 4. PREDICTION ABILITY OF MODEL #
