@@ -6,7 +6,7 @@ wish to fit a SVM to the dataset. Lastly, tune parameters for optimal
 performance.
 
 Author: Faiyaz Hasan
-Date: October 8, 2016
+Date: October 11, 2016
 """
 #############################
 # 0. PACKAGES AND LOAD DATA #
@@ -41,42 +41,9 @@ y= df.iloc[:, 11].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, 
                                                     random_state=0)
 
-# standardize numeric feature variables of dataset
-stdsc = StandardScaler()
-X_train_std = stdsc.fit_transform(X_train[:, 3:11])
-X_test_std = stdsc.transform(X_test[:, 3:11])
-
 ############################################
 # 2. MODEL AND TEST TRAINING DATA WITH SVM #
 ############################################
-
-param_range = [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0]
-param_grid = [{'C': param_range,
-               'kernel': ['linear']},
-               {'C': param_range,
-                'gamma': param_range,
-                'kernel': ['rbf']}]
-
-## optimize parameters via GridSearchCV
-#svm = SVC(random_state=0)
-#gs = GridSearchCV(estimator=svm,
-#                  param_grid=param_grid,
-#                  scoring='accuracy',
-#                  cv=10)
-#gs = gs.fit(X_train_std, y_train)
-#print(gs.best_score_)
-#print(gs.best_params_)
-#
-#svm = SVC(kernel='rbf', gamma=0.001, C=1000.0, random_state=0)
-#svm.fit(X_train_std, y_train)
-#print('SVM Training score: ', svm.score(X_train_std, y_train)*100)
-
-
-## feature importance with random forest
-#forest = RandomForestClassifier(n_estimators=10000,
-#                                random_state=0)
-#forest.fit(X_train_std, y_train)
-#print('Feature importance: ', forest.feature_importances_)
 
 svr = SVR()
 svr.fit(X_train_std, y_train)
