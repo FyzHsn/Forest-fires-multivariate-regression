@@ -70,7 +70,7 @@ A brief discussion of the feature vectors:
 # 2. DATA PRE-PROCESSING #
 ##########################
 # Remove row where the burn area is 0.0
-df = df[df.area >= 1.0]
+#df = df[df.area != 0.0]
 print(df.shape)
 
 # Create target variable and feature vectors - information about the
@@ -99,15 +99,15 @@ print('*********************')
 print(df['area'].describe())
 
 # histogram of target variable - burnt area
-df['area'].hist(bins=200)
+df['area'].hist(bins=50)
 plt.title('Histogram of burnt area (in ha)')
 plt.show()
 #plt.savefig('untransformed_area.png')
 #plt.clf()
 
 # transformation of area to perhaps to deal with skewness
-area_transform = np.log(1 + df['area'])
-area_transform.hist(bins=15)
+area_transform = np.log(np.log(1 + df['area'])+1)
+area_transform.hist(bins=50)
 plt.title('log(1 + area) transform of the area')
 plt.show()
 #plt.savefig('transformed_area.png')
