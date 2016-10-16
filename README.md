@@ -24,8 +24,9 @@ Limitations of the dataset: We do not know the extent of human intervention in t
 ### Classification of minor and major forest fires via SVM
 Since, predicting the burnt area seems to be unviable due to the chaotic nature of fires, I reformulated the problem in terms of classifying minor and major forest fires. Here's the cross validation curve plot:
 
-![](?raw=true)
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/SVM_fire_class.png?raw=true)
 
+An additional piece of the information is the class split: 52% to 48%. Meanwhile, the classification algorithm gets a max score of 60% with quite a bit of variance. So, we can do slightly better than flipping a coin to figure out major vs minor fires. On the other hand it does look like the algorithm would benefit from more data. So, it might be a good idea to try a more complex model to fit the data.  
 
 Introduction
 ------------
