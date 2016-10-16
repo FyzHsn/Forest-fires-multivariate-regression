@@ -1,6 +1,27 @@
 Forest-fires-multivariate-regression
 ====================================
 
+Summary of main results
+-----------------------
+
+### Spatial properties of fires
+Here are plots showing the spatial results of the forest fires dataset. The next three plots show the number of forest fires, total area burnt and average damaged area per fire in each of the park zones respectively.  
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/FireNumParkZone.png?raw=true)  
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/FireAreaParkZone.png?raw=true)  
+![](https://github.com/FyzHsn/Forest-fires-multivariate-regression/blob/master/Figs/FireDensityParkZone.png?raw=true)  
+* Note that the greatest damaged areas have the most fires with one exception. 
+* Even though the areas with the greatest number of fires have the greatest damage done, the damage is mostly due to one huge fire rather than many medium sized fires. In fact most of the firest are extremely negligible.
+
+**Treat with skepticism (but interesting)** This might be evidence for having controlled fires instead of stamping out every tiny fire. Controlled minor fires have the effect of burning out the underbrush and preventing larger extreme forest fires.
+
+### Evidence of power law behaviour
+Furthermore, there is some evidence for power law behaviour. 99% of the area burnt is due to 1% of the fires.  
+
+One of the questions would be how do I figure that out? Can you device a metric to measure extremes in area burnt during fires?
+
+Limitations of the dataset: We do not know how much of the fire burn area was due to people putting it out. That adds a hugely complicating factor in making inferences because it is not accounted for in the dataset. 
+
+
 Introduction
 ------------
 
