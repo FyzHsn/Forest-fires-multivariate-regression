@@ -19,7 +19,7 @@ Furthermore, there is some evidence for power law behaviour. 99% of the area bur
 
 One of the questions would be how do I figure that out? Can you device a metric to measure extremes in area burnt during fires?
 
-Limitations of the dataset: We do not know how much of the fire burn area was due to people putting it out. That adds a hugely complicating factor in making inferences because it is not accounted for in the dataset. 
+Limitations of the dataset: We do not know the extent of human intervention in the size of the fire. Where the fires being put out by forest patrols. Then, that adds an additional level of complication since we do not have information as to detection time and then response time. That adds a hugely complicating factor in making inferences because it is not accounted for in the dataset. 
 
 
 Introduction
