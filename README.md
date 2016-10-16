@@ -21,6 +21,11 @@ One of the questions would be how do I figure that out? Can you device a metric 
 
 Limitations of the dataset: We do not know the extent of human intervention in the size of the fire. Where the fires being put out by forest patrols. Then, that adds an additional level of complication since we do not have information as to detection time and then response time. That adds a hugely complicating factor in making inferences because it is not accounted for in the dataset. 
 
+### Classification of minor and major forest fires via SVM
+Since, predicting the burnt area seems to be unviable due to the chaotic nature of fires, I reformulated the problem in terms of classifying minor and major forest fires. Here's the cross validation curve plot:
+
+![](?raw=true)
+
 
 Introduction
 ------------
